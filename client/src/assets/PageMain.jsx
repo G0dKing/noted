@@ -25,8 +25,7 @@ const PageMain = () => {
           <img src={logo} className="logo" alt="" />
 
           <div className="btn-container">
-            <BtnMain label="Explore"
-              onClick={handleClick} />
+            <BtnMain onClick={handleClick} />
           </div>
 
         </div>

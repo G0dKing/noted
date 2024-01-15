@@ -1,8 +1,17 @@
+/* fonts.css */
 
-@font-face { 
-  font-family: 'Cervanttis'; 
-  src: local('Cervanttis'), url('../assets/fonts/Cervanttis.ttf')
-  format('truetype');
+/* Cervanttis */
+@font-face {
+  font-family: 'Cervanttis';
+  src: local('Cervanttis'), url('../assets/fonts/Cervanttis.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+}
+
+/* Guild of Professional Actors */
+@font-face {
+  font-family: 'Guild';
+  src: local('guildof'), url('../assets/fonts/guildof.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normsl;
 }

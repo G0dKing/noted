@@ -1,4 +1,4 @@
-/* PageMain.css */
+/* PageMain.css (Landing Page) */
 
 @import url('./fonts.css');
 
@@ -16,6 +16,7 @@ body {
 }
 
 .bgVid {
+  background: black;
   position: fixed;
   right: 0;
   bottom: 0;
@@ -25,8 +26,23 @@ body {
   height: auto;
   z-index: -10;
   overflow: hidden;
-  background: black;
+
 }
+
+.darker {
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -9;
+  overflow: hidden;
+}
+
 
 .header {
   position: relative;
@@ -35,13 +51,13 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
 }
 
 .hero {
   position: fixed;
-  top: 15;
+  top: 25vh;
   display: flex;
   width: 100%;
   align-items: center;
@@ -56,11 +72,14 @@ body {
   height: auto;
   margin: 0 auto;
   padding: 0;
-  max-width: 40%;
+  max-width: 60%;
+  min-width: 60%;
   top: 0;
 }
 
-
-.link {
-  color: #61dafb;
+@media screen and (max-width: 700px) {
+  .hero img {
+    min-width: 75%;
+    min-height: 200px;
+  }
 }

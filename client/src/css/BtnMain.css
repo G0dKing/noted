@@ -1,32 +1,60 @@
 .btn-container {
     position: fixed;
     display: flex;
+    flex-direction: row;
     width: 100%;
     align-items: center;
     justify-content: center;
     text-align: center;
     left: 0;
-    margin-top: 45vh;
+    margin-top: 55vh;
+    background-color: rgba(51, 0, 56, 0.295);
+    border: 1px solid rgba(47, 0, 216, 0.438);
+    overflow: hidden;
 }
 
 .btn-hero {
-    font-family: Cervanttis, Helvetica, Arial, sans-serif;
-    background: none;
-    color: white;
+    font-family: Guild, Helvetica, Arial, sans-serif;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(255, 190, 215);
     border: none;
     padding: 5px 10px;
-    font-size: 16px;
     cursor: pointer;
-    transition: color 0.3s ease, border 0.3s ease, text-shadow 0.3s ease;
-    text-shadow: 1px 1px 5px rgba(0, 50, 255, 0.8), 0px 5px 10px rgba(255, 0, 255, 0.8), 0px -5px 20px rgba(255, 255, 255, 0.7), 0px 2px 2px rgba(255, 0, 255, 1), 0px -2px 2px rgba(255, 0, 0, 1);
+    text-shadow: 1px 1px 5px rgba(0, 10, 56, 0.8), 0 0 10px rgba(156, 174, 255, 0.8), 0px 0 20px rgba(255, 255, 255, 0.7), 0px 2px 10px rgb(1, 74, 87), 0px -2px 2px rgb(111, 0, 255), 0 0 10px #000;
     text-align: center;
     justify-content: center;
-    font-size: 1.5em;
+    font-size: 3em;
     font-weight: 400;
-    min-width: 60%;
+    min-width: 15%;
+    width: auto;
+    box-sizing: 0;
+    box-shadow: 0 2 5px #000;
+    transition: color 0.3s ease, border 0.3s ease, text-shadow 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, box-sizing 0.3s ease;
 }
 
-.btn-hero:hover {
-    color: red;
-    text-shadow: 1px 1px 5px rgba(255, 50, 0, 0.8), 0px 5px 10px rgba(255, 0, 0, 0.8), 0px -5px 20px rgba(255, 37, 164, 0.7), 0px 2px 2px rgb(212, 0, 255), 0px -2px 2px rgba(255, 0, 0, 1), 0px, 10px, 10px rgba(255, 255, 255, 0.9);
+.btn-hero:hover,
+:focus {
+    color: #ffffff69;
+    background-color: rgba(1, 110, 235, 0.199);
+    border: 1px solid #ff002b3a;
+    border-radius: 1;
+    border-bottom: 2em;
+    text-shadow: 0 0 5px #ffffff, 0 0 10px #b700ff, 0 0 20px #ffffff;
+    box-shadow: 0 0 5px #7100f3, 0 0 20px #7c044ab4, 0 0 50px #5e04f0,
+        0 0 100px #71029c;
+    box-sizing: 2em;
+    overflow: visible;
+}
+
+@media screen and (max-width: 600px) {
+    .btn-hero {
+        width: auto;
+        min-width: 40%;
+        font-size: 1.5em;
+        display: inline;
+    }
+
+    .btn-container {
+        margin-top: 45vh;
+    }
 }

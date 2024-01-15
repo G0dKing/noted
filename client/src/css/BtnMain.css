@@ -1,0 +1,32 @@
+.btn-container {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    left: 0;
+    margin-top: 45vh;
+}
+
+.btn-hero {
+    font-family: Cervanttis, Helvetica, Arial, sans-serif;
+    background: none;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.3s ease, border 0.3s ease, text-shadow 0.3s ease;
+    text-shadow: 1px 1px 5px rgba(0, 50, 255, 0.8), 0px 5px 10px rgba(255, 0, 255, 0.8), 0px -5px 20px rgba(255, 255, 255, 0.7), 0px 2px 2px rgba(255, 0, 255, 1), 0px -2px 2px rgba(255, 0, 0, 1);
+    text-align: center;
+    justify-content: center;
+    font-size: 1.5em;
+    font-weight: 400;
+    min-width: 60%;
+}
+
+.btn-hero:hover {
+    color: red;
+    text-shadow: 1px 1px 5px rgba(255, 50, 0, 0.8), 0px 5px 10px rgba(255, 0, 0, 0.8), 0px -5px 20px rgba(255, 37, 164, 0.7), 0px 2px 2px rgb(212, 0, 255), 0px -2px 2px rgba(255, 0, 0, 1), 0px, 10px, 10px rgba(255, 255, 255, 0.9);
+}

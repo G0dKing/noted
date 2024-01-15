@@ -1,0 +1,8 @@
+
+@font-face { 
+  font-family: 'Cervanttis'; 
+  src: local('Cervanttis'), url('../assets/fonts/Cervanttis.ttf')
+  format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

@@ -25,7 +25,7 @@ Features:
 	11. Add user-created plugins and modifications for infinite expansion and functionality.
 
 High-Level Roadmap:
-	I. Phase One: Planning, Organization, Prepping Local and Cloud-based Environments for Development
+	I. Phase One: Planning, Organization, Prepping Local and Cloud-based Environments for Development.
 	II. Phase Two: Create a "skeleton" of the app with basic functionality to serve as a foundation.
 	III. Phase Three: Develop the application backend, integrate APIs and services, facillitate communication between elements, map out and develop application, network, and database infrastructures.
 	IV. Phase Four: Develop and design a fully-featured, responsive frontend and connect it to the backend.

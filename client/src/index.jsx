@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import './css/App.css';
-import './css/PageMain.css';
+import './css/LandingPage.css';
 import './css/BtnMain.css';
 import './css/Copyright.css';
 

@@ -1,12 +1,12 @@
 // App.jsx
 
 import React from 'react';
-import PageMain from './assets/PageMain';
+import LandingPage from './assets/LandingPage';
 
 const App = () => {
   return (
     <div className="app">
-        <PageMain />
+      <LandingPage />
     </div>
   );
 };

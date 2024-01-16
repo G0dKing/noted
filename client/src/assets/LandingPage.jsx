@@ -1,4 +1,4 @@
-// PageMain.jsx
+// LandingPage.jsx
 
 import React, { useState } from 'react';
 import logo from './logo.png';
@@ -6,10 +6,10 @@ import bgVideo from './bg.mp4';
 import BtnMain from './BtnMain'
 import Copyright from './Copyright';
 import Login from './Login';
-import '../css/PageMain.css';
+import '../css/LandingPage.css';
 import '../css/fonts.css';
 
-const PageMain = () => {
+const LandingPage = () => {
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -46,4 +46,4 @@ const PageMain = () => {
   );
 };
 
-export default PageMain;
+export default LandingPage;

@@ -5,11 +5,11 @@ import '../css/BtnMain.css';
 
 
 const BtnMain = ({ onClick }) => {
-    const [label, setLabel] = useState(window.innerWidth < 700 ? 'Touch to Explore' : 'Click to Explore');
+    const [label, setLabel] = useState(window.innerWidth < 600 ? 'Tap to Explore' : 'Click to Explore');
 
     useEffect(() => {
         const handleResize = () => {
-            setLabel(window.innerWidth < 700 ? 'Touch to Explore' : 'Click to Explore');
+            setLabel(window.innerWidth < 600 ? 'Tap to Explore' : 'Click to Explore');
         };
 
         window.addEventListener('resize', handleResize);

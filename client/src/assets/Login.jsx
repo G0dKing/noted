@@ -25,13 +25,12 @@ const Login = ({ isVisible, onClose, children }) => {
                 <div className='login-socials'>
                     <button className='google'><img src={google}></img></button>
                     <button className='fb'><img src={fb}></img></button>
-
                 </div>
                 <div className='modal-footer'>
                     <p>No Account? <a href="">Register</a></p>
                 </div>
-            </div >
-        </div >
+            </div>
+        </div>
     );
 };
 

@@ -1,3 +1,5 @@
+/* BtnMain.css */
+
 .btn-container {
     position: fixed;
     display: flex;
@@ -29,21 +31,18 @@
     width: auto;
     box-sizing: 0;
     box-shadow: 0 2 5px #000;
-    transition: color 0.3s ease, border 0.3s ease, text-shadow 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, box-sizing 0.3s ease;
+    transition: color 0.3s ease, border 0.3s ease, border-color 0.3s ease, text-shadow 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, box-sizing 0.3s ease;
 }
 
 .btn-hero:hover,
-:focus {
+.btn-hero:focus {
     color: #ffffff69;
-    background-color: rgba(1, 110, 235, 0.199);
-    border: 1px solid #ff002b3a;
-    border-radius: 1;
-    border-bottom: 2em;
+    background-color: rgba(6, 8, 104, 0);
+    border: none;
     text-shadow: 0 0 5px #ffffff, 0 0 10px #b700ff, 0 0 20px #ffffff;
-    box-shadow: 0 0 5px #7100f3, 0 0 20px #7c044ab4, 0 0 50px #5e04f0,
-        0 0 100px #71029c;
+    box-shadow: 0 0 5px #7100f359, 0 0 20px #7c044a48, c;
     box-sizing: 2em;
-    overflow: visible;
+    overflow: hidden;
 }
 
 @media screen and (max-width: 600px) {

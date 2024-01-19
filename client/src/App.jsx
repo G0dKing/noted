@@ -1,14 +1,14 @@
 // App.jsx
 
-import React from 'react';
-import LandingPage from './assets/LandingPage';
+import { BrowserRouter as Router } from 'react-router-dom'
+import LandingPage from './assets/LandingPage'
 
 const App = () => {
   return (
-    <div className="app">
+    <Router>
       <LandingPage />
-    </div>
-  );
-};
+    </Router>
+  )
+}
 
-export default App;
+export default App

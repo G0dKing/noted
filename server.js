@@ -10,6 +10,16 @@ const PORT = process.env.PORT || 3001;
 
 app.use(cors());
 
+app.get('./api/data' , cors(), (req, res) => {
+
+});
+
+app.use('/api/auth', authRoutes);
+
+app.get('/api/hello', (req, res) => {
+  res.json({ message: 'Hello from the server!' });
+});
+
 mongoose.connect('mongodb://localhost/noted', {
   useNewUrlParser: true,
   useUnifiedTopology: true

@@ -1,39 +1,19 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import BtnClose from './BtnClose';
-
+import google from './google.svg';
+import fb from './fb.svg';
 import '../css/Login.css';
 
 const Login = ({ isVisible, toggleModal }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [loginError, setLoginError] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
-      });
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      const data = await response.json();
-      if (data.token) {
-        localStorage.setItem('token', data.token);
-        toggleModal();
-        navigate('/dashboard');
-      } else {
-        setLoginError('Invalid username or password');
-      }
-    } catch (error) {
-      console.error('Error during login:', error);
-      setLoginError('Login failed. Please try again.');
-    }
+     navigate('/dashboard');
   };
 
   if (!isVisible) return null;
@@ -43,11 +23,40 @@ const Login = ({ isVisible, toggleModal }) => {
       <div className='modal'>
         <BtnClose onClick={toggleModal} />
         <h2>Login</h2>
-        {loginError && <p className="error">{loginError}</p>}
         <form onSubmit={handleLogin}>
-          {/* Form Fields */}
+          <div className='text-username'>
+            <input
+              type='text'
+              placeholder='Username'
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
+          <div className='text-password'>
+            <input
+              type='password'
+              placeholder='Password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <button type='submit' className='btn-submit'>
+            Submit
+          </button>
         </form>
-        {/* Rest of the component */}
+        <div className='login-socials'>
+          <button className='google'>
+            <img src={google} alt='Google' />
+          </button>
+          <button className='fb'>
+            <img src={fb} alt='Facebook' />
+          </button>
+        </div>
+        <div className='modal-footer'>
+          <p>
+            No Account? <Link to='/register'>Register</Link>
+          </p>
+        </div>
       </div>
     </div>
   );

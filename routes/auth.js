@@ -1,3 +1,5 @@
+// ./routes/auth.js
+
 const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -6,12 +8,31 @@ const router = express.Router();
 
 // Signup Endpoint
 router.post('/signup', async (req, res) => {
-  // Signup logic
+  try {
+    const { username, password } = req.body;
+    const user = new User({ username, hashedPassword: password });
+    await user.save();
+    res.status(201).send('User created successfully');
+  } catch (error) {
+    res.status(500).send('Error creating user');
+  }
 });
 
 // Login Endpoint
 router.post('/login', async (req, res) => {
-  // Login logic
+  try {
+    const { username, password } = req.body;
+    const user = await User.findOne({ username });
+    if (user && await bcrypt.compare(password, user.hashedPassword)) {
+      // Generate token (add your secret key and token settings)
+      const token = jwt.sign({ userId: user._id }, 'authkey', { expiresIn: '1h' });
+      res.status(200).json({ token });
+    } else {
+      res.status(401).send('Invalid credentials');
+    }
+  } catch (error) {
+    res.status(500).send('Error logging in');
+  }
 });
 
 module.exports = router;

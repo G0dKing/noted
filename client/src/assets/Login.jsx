@@ -1,11 +1,9 @@
-// Login.jsx
-
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import '../css/Login.css';
+import { useNavigate, Link } from 'react-router-dom';
 import BtnClose from './BtnClose';
 import google from './google.svg';
 import fb from './fb.svg';
+import '../css/Login.css';
 
 const Login = ({ isVisible, toggleModal }) => {
     const [username, setUsername] = useState('');
@@ -13,18 +11,26 @@ const Login = ({ isVisible, toggleModal }) => {
     const navigate = useNavigate();
 
     const handleLogin = async (e) => {
-        e.preventDefault(); // Prevent form default behavior
-        const response = await fetch('/api/auth/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, password })
-        });
-        const data = await response.json();
-        if (data.token) {
-            localStorage.setItem('token', data.token);
-            toggleModal();
-            navigate('/dashboard'); // Redirect to dashboard
-        };
+        e.preventDefault();
+        try {
+            const response = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            });
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            if (data.token) {
+                localStorage.setItem('token', data.token);
+                toggleModal();
+                navigate('/dashboard');
+            }
+        } catch (error) {
+            console.error('Error during login:', error);
+            // Handle error appropriately
+        }
     };
 
     if (!isVisible) return null;
@@ -36,16 +42,17 @@ const Login = ({ isVisible, toggleModal }) => {
                 <h2>Login</h2>
                 <form onSubmit={handleLogin}>
                     <div className='text-username'>
-                        <textarea
+                        <input
+                            type='text'
                             placeholder='Username'
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                         />
                     </div>
                     <div className='text-password'>
-                        <textarea
-                            placeholder='Password'
+                        <input
                             type='password'
+                            placeholder='Password'
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
@@ -57,7 +64,7 @@ const Login = ({ isVisible, toggleModal }) => {
                     <button className='fb'><img src={fb} alt='Facebook'></img></button>
                 </div>
                 <div className='modal-footer'>
-                    <p>No Account? <a href='/register'>Register</a></p>
+                    <p>No Account? <Link to="/register">Register</Link></p>
                 </div>
             </div>
         </div>

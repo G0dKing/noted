@@ -31,12 +31,12 @@
     font-family: Roboto, Helvetica, sans-serif;
     font-size: 3em;
     font-weight: 200;
-    color: rgb(255, 255, 255)
+    color: rgb(255, 255, 255);
 }
 
-.modal textarea {
+/* Updated from textarea to input */
+.modal input {
     font-family: Roboto, Helvetica, sans-serif;
-    resize: none;
     color: white;
     background: none;
     border: 1px solid;
@@ -46,9 +46,11 @@
     text-align: left;
     margin: 5px;
     padding: 2px;
+    width: 95%;
+    /* Adjusted width for better layout */
 }
 
-.modal textarea:focus {
+.modal input:focus {
     background: white;
     color: black;
     border: none;
@@ -90,23 +92,14 @@
     align-items: center;
 }
 
-.google {
+.google,
+.fb {
     padding: 0px;
     margin: 0px;
     width: 30%;
     background: none;
     border: none;
     border-color: white;
-}
-
-.fb {
-    padding: 0px;
-    margin: -10px;
-    width: 31%;
-    background: none;
-    border: none;
-    border-color: white;
-    margin-left: 0px;
 }
 
 .modal-footer {

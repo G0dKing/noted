@@ -1,13 +1,26 @@
+// server.js
+
 const express = require('express');
 const cors = require('cors')
 const path = require('path');
 const app = express();
+const mongoose = require('mongoose');
+const authRoutes = require('./routes/auth');
 const PORT = process.env.PORT || 3001;
+
+app.use(cors());
+
+mongoose.connect('mongodb://localhost/noted', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.log(err));
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, './client/dist')));
 
-app.use(cors());
+app.use('/api/auth', authRoutes);
 
 app.get('/api/hello', (req, res) => {
   res.json({ message: 'Hello from the server!' });

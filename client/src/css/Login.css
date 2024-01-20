@@ -1,5 +1,11 @@
 /* Login.css */
 
+@media screen and (max-width: 600) {
+    .modal {
+        max-height:33%;
+    }
+}
+
 .modal-backdrop {
     position: fixed;
     top: 0;
@@ -34,7 +40,6 @@
     color: rgb(255, 255, 255);
 }
 
-/* Updated from textarea to input */
 .modal input {
     font-family: Roboto, Helvetica, sans-serif;
     color: white;
@@ -47,7 +52,6 @@
     margin: 5px;
     padding: 2px;
     width: 95%;
-    /* Adjusted width for better layout */
 }
 
 .modal input:focus {

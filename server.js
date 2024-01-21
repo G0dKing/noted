@@ -6,15 +6,17 @@ const User = require('./models/user')
 const jwt = require('jsonwebtoken')
 const path = require('path')
 const mongoose = require('mongoose')
-const apiRoutes = require('./routes/apiRoutes');
+const apiRoutes = require('./routes/apiRoutes')
+const authRoutes = require('./routes/auth')
 const PORT = process.env.PORT || 3001
 
 const app = express()
 
 app.use(cors())
-app.use(express.json());
+app.use(express.json())
 
 app.use('/api/auth', apiRoutes)
+app.use('/api/auth', authRoutes)
 
 mongoose
   .connect(process.env.MONGODB_URI || 'mongodb://localhost:27017', {

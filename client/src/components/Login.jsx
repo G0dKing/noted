@@ -23,6 +23,7 @@ const Login = ({ isVisible, toggleModal, parentCallback }) => {
 
     if (!username || !password) {
       setError('Please enter both username and password.')
+      setLoading(false)
       return
     }
 

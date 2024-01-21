@@ -14,10 +14,17 @@ body {
     height:vh;
     background-color: black;
     justify-content: center;
-    align-items: center;
-    text-align: center;
+    align-items: center;  
 }   
 
-h1 {
-    color: white;
+.dash-header {
+    width:100%;
+    height: 33%;
+    top: 0;
+   
+}
+
+.dash-container h1 {
+    color: rgb(255, 255, 255);
+     text-align: center;
 }

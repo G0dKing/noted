@@ -14,7 +14,7 @@ const app = express()
 app.use(cors())
 app.use(express.json());
 
-app.use('/api', apiRoutes)
+app.use('/api/auth', apiRoutes)
 
 mongoose
   .connect(process.env.MONGODB_URI || 'mongodb://localhost:27017', {

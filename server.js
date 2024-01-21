@@ -1,23 +1,20 @@
 // server.js
 
 const express = require('express')
-const router = express.Router
 const cors = require('cors')
 const User = require('./models/user')
 const jwt = require('jsonwebtoken')
 const path = require('path')
-const app = express()
 const mongoose = require('mongoose')
-const authRoutes = require('./routes/auth')
+const apiRoutes = require('./routes/apiRoutes');
 const PORT = process.env.PORT || 3001
 
+const app = express()
+
 app.use(cors())
+app.use(express.json());
 
-app.get('/api/data', cors(), (req, res) => {
-  // Your code here
-})
-
-app.use('/api/auth', authRoutes)
+app.use('/api', apiRoutes)
 
 mongoose
   .connect(process.env.MONGODB_URI || 'mongodb://localhost:27017', {

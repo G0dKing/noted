@@ -14,6 +14,8 @@ const SALT_ROUNDS = 10
 router.post('/signup', async (req, res) => {
   try {
     const { username, password } = req.body
+    const salt = await bcrypt.genSalt(SALT_ROUNDS)
+    const hashedPassword = await bcrypt.hash(password, salt)
     const user = new User({ username, hashedPassword: password })
     await user.save()
     res.status(201).send('User created successfully')
@@ -27,8 +29,8 @@ router.post('/login', async (req, res) => {
   try {
     const { username, password } = req.body
     const user = await User.findOne({ username })
+
     if (user && (await bcrypt.compare(password, user.hashedPassword))) {
-      // Generate token (add your secret key and token settings)
       const token = jwt.sign({ userId: user._id }, JWT_SECRET, {
         expiresIn: '1h'
       })

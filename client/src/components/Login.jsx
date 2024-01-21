@@ -38,6 +38,7 @@ const Login = ({ isVisible, toggleModal, parentCallback }) => {
 
         if (!response.ok) {
           setError(responseData.message || 'Login failed. Please try again.')
+          setLoading(false)
         } else {
           if (responseData.token) {
             localStorage.setItem('token', responseData.token)
@@ -48,6 +49,7 @@ const Login = ({ isVisible, toggleModal, parentCallback }) => {
             setError(
               'Invalid Credentials. Please ensure you are properly entering the correct username and password.'
             )
+            setLoading(false)
           }
         }
       } catch (jsonParseError) {
@@ -56,8 +58,9 @@ const Login = ({ isVisible, toggleModal, parentCallback }) => {
     } catch (error) {
       console.error('Error during login:', error)
       setError(
-        'A server error has occurred. Please try signing-in again in a few minutes.'
+        'A server error has occurred. Please try again in a few minutes.'
       )
+      setLoading(false)
     } finally {
       setLoading(false)
       setUsername('')

@@ -12,11 +12,19 @@ const Login = ({ isVisible, toggleModal, parentCallback }) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
+
   const navigate = useNavigate()
 
   const handleLogin = async e => {
     e.preventDefault()
     setError('')
+    setLoading(true)
+
+    if (!username || !password) {
+      setError('Please enter both username and password.')
+      return
+    }
 
     try {
       const response = await fetch('/api/auth/login', {
@@ -25,23 +33,35 @@ const Login = ({ isVisible, toggleModal, parentCallback }) => {
         body: JSON.stringify({ username, password })
       })
 
-      const responseData = await response.json()
+      try {
+        const responseData = await response.json()
 
-      if (!response.ok) {
-        setError(responseData.message || 'Login failed. Please try again.')
-      } else {
-        if (responseData.token) {
-          localStorage.setItem('token', responseData.token)
-          parentCallback(true)
-          toggleModal()
-          navigate('/dashboard')
+        if (!response.ok) {
+          setError(responseData.message || 'Login failed. Please try again.')
         } else {
-          setError('Invalid Credentials')
+          if (responseData.token) {
+            localStorage.setItem('token', responseData.token)
+            parentCallback(true)
+            toggleModal()
+            navigate('/dashboard')
+          } else {
+            setError(
+              'Invalid Credentials. Please ensure you are properly entering the correct username and password.'
+            )
+          }
         }
+      } catch (jsonParseError) {
+        setError('An error occurred. Please try reloading the page.')
       }
     } catch (error) {
       console.error('Error during login:', error)
-      setError('An unknown error has occurred.')
+      setError(
+        'A server error has occurred. Please try signing-in again in a few minutes.'
+      )
+    } finally {
+      setLoading(false)
+      setUsername('')
+      setPassword('')
     }
   }
 
@@ -72,8 +92,13 @@ const Login = ({ isVisible, toggleModal, parentCallback }) => {
               onChange={e => setPassword(e.target.value)}
             />
           </div>
-          <button type='submit' className='btn-submit' onClick={handleLogin}>
-            Submit
+          <button
+            type='submit'
+            className='btn-submit'
+            onClick={handleLogin}
+            disabled={loading}
+          >
+            {loading ? 'Loading...' : 'Submit'}
           </button>
         </form>
         <div className='login-socials'>

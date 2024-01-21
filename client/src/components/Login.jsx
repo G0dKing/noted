@@ -25,20 +25,19 @@ const Login = ({ isVisible, toggleModal, parentCallback }) => {
         body: JSON.stringify({ username, password })
       })
 
-      if (!response.ok) {
-        const errorData = await response.json()
-        setError(errorData.message || 'Login failed. Please try again.')
-        return
-      }
+      const responseData = await response.json()
 
-      const data = await response.json()
-      if (data.token) {
-        localStorage.setItem('token', data.token)
-        parentCallback(true)
-        toggleModal()
-        navigate('/dashboard')
+      if (!response.ok) {
+        setError(responseData.message || 'Login failed. Please try again.')
       } else {
-        setError('Invalid Credentials')
+        if (responseData.token) {
+          localStorage.setItem('token', responseData.token)
+          parentCallback(true)
+          toggleModal()
+          navigate('/dashboard')
+        } else {
+          setError('Invalid Credentials')
+        }
       }
     } catch (error) {
       console.error('Error during login:', error)

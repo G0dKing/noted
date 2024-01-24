@@ -1,8 +1,8 @@
 // BtnClose.jsx
 
 import '../css/BtnClose.css'
+import PropTypes from 'prop-types'
 
-// eslint-disable-next-line react/prop-types
 function BtnClose ({ onClick }) {
   return (
     <button className='btn-x' onClick={onClick}>
@@ -11,4 +11,7 @@ function BtnClose ({ onClick }) {
   )
 }
 
+BtnClose.propTypes = {
+  onClick: PropTypes.func.isRequired
+}
 export default BtnClose

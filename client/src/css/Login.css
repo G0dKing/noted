@@ -21,6 +21,7 @@
 }
 
 .modal {
+    position: static;
     background-color: rgba(0, 19, 27, 0.24);
     backdrop-filter: blur(5px);
     padding: 20px;
@@ -30,13 +31,16 @@
     box-shadow: 0 0 15px rgba(0, 96, 160, 0.829);
     animation: slideUp 0.5s ease-out;
     color: white;
-    max-width: 33%;
+    max-width: 600px;
+    min-width:400px;
+    max-height: 350px;
+    min-height: 350px;
 }
 
-.modal h2 {
+.h2 {
     font-family: Roboto, Helvetica, sans-serif;
-    font-size: 3em;
-    font-weight: 200;
+    font-size: 5em;
+    font-weight: 300;
     color: rgb(255, 255, 255);
 }
 
@@ -44,6 +48,8 @@
     font-family: Roboto, Helvetica, sans-serif;
     color: white;
     background: none;
+    padding: 20px;
+    margin: 20px;
     border: 1px solid;
     border-color: rgb(6, 221, 228);
     font-size: 1.5em;
@@ -78,7 +84,7 @@
 .btn-submit:hover,
 .btn-submit:focus {
     color: rgb(255, 255, 255);
-    background-color: rgb(163, 0, 68);
+    background-color: rgb(124, 0, 52);
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.829);
 }
 
@@ -106,22 +112,12 @@
     border-color: white;
 }
 
-.modal-footer {
-    font-size: 0.9em;
-    color: rgba(84, 255, 235, 0.781);
+.error-message {
+    color: red;
+    font-size: 1em;
+    
 }
 
-.modal-footer a {
-    font-style: none;
-    color: rgb(0, 162, 255);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.modal-footer a:hover,
-.modal-footer a:focus {
-    color: rgb(255, 0, 128);
-}
 
 @keyframes fadeIn {
     from {

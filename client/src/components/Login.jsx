@@ -8,6 +8,8 @@ import google from '../assets/google.svg'
 import fb from '../assets/fb.svg'
 import '../css/Login.css'
 
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth' // GREEN
+
 const Login = ({ isVisible, toggleModal, parentCallback }) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -28,44 +30,21 @@ const Login = ({ isVisible, toggleModal, parentCallback }) => {
     }
 
     try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
-      })
-
-      try {
-        const responseData = await response.json()
-
-        if (!response.ok) {
-          setError(responseData.message || 'Login failed. Please try again.')
-          setLoading(false)
-        } else {
-          if (responseData.token) {
-            localStorage.setItem('token', responseData.token)
-            parentCallback(true)
-            toggleModal()
-            navigate('/dashboard')
-          } else {
-            setError(
-              'Invalid Credentials. Please ensure you are properly entering the correct username and password.'
-            )
-            setLoading(false)
-          }
-        }
-      } catch (jsonParseError) {
-        setError('An error occurred. Please try reloading the page.')
-      }
+      const auth = getAuth() // GREEN
+      await signInWithEmailAndPassword(auth, username, password) // GREEN
+      // On successful login // GREEN
+      localStorage.setItem('token', 'your_token_here') // GREEN - Handle token as per your requirement // GREEN
+      parentCallback(true) // GREEN
+      toggleModal() // GREEN
+      navigate('/dashboard') // GREEN
     } catch (error) {
-      console.error('Error during login:', error)
-      setError(
-        'A server error has occurred. Please try again in a few minutes.'
-      )
-      setLoading(false)
+      console.error('Error during login:', error) // GREEN
+      setError('Login failed. Please check your credentials and try again.') // GREEN
+      setLoading(false) // GREEN
     } finally {
-      setLoading(false)
-      setUsername('')
-      setPassword('')
+      setLoading(false) // GREEN
+      setUsername('') // GREEN
+      setPassword('') // GREEN
     }
   }
 
@@ -110,7 +89,11 @@ const Login = ({ isVisible, toggleModal, parentCallback }) => {
             <img src={google} alt='Google' />
           </button>
           <button className='fb'>
-            <img src={fb} alt='Facebook' />
+            <img
+              src={fb}
+              alt='Facebook'
+              href='https://noted-12128.firebaseapp.com/__/auth/handler'
+            />
           </button>
         </div>
         <div className='modal-footer'>

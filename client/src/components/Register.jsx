@@ -1,50 +1,46 @@
-// Login.jsx
-
 import { useState } from 'react'
 import PropTypes from 'prop-types'
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 import '../css/Login.css'
+import '../css/Register.css'
 import '../css/LandingPage.css'
 import '../css/fonts.css'
 
-const Login = ({ navigate, toggleModal, switchToRegister }) => {
+const Register = ({ navigate, closeModal, switchToLogin }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
-  const handleLogin = async e => {
+  const handleRegister = async e => {
     e.preventDefault()
     setError('')
     setLoading(true)
 
     if (!email || !password) {
-      setError('Please enter both email and password.')
+      setError('Please enter both an email and password.')
       setLoading(false)
       return
     }
 
     try {
       const auth = getAuth()
-      await signInWithEmailAndPassword(auth, email, password)
-      localStorage.setItem('token', 'your_token_here')
-      toggleModal()
+      await createUserWithEmailAndPassword(auth, email, password)
       navigate('/dashboard')
+      closeModal()
     } catch (error) {
-      console.error('Error during login:', error)
-      setError('Login failed. Please check your credentials and try again.')
+      console.error('Error during registration:', error)
+      setError(error.message)
       setLoading(false)
     } finally {
       setLoading(false)
-      setEmail('')
-      setPassword('')
     }
   }
 
   return (
     <div>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
+      <h2>Register</h2>
+      <form onSubmit={handleRegister}>
         {error && <div className='error-message'>{error}</div>}
         <div className='text-email'>
           <input
@@ -66,22 +62,19 @@ const Login = ({ navigate, toggleModal, switchToRegister }) => {
           {loading ? 'Loading...' : 'Submit'}
         </button>
       </form>
-      <div className='modal-footer'>
-        <p>
-          Don&apos;t have an account?{' '}
-          <button className='btn-register' onClick={switchToRegister}>
-            Register
-          </button>
-        </p>
+      <div className='btn-back-box'>
+        <button className='btn-back' onClick={switchToLogin}>
+          Back to Login
+        </button>
       </div>
     </div>
   )
 }
 
-Login.propTypes = {
+Register.propTypes = {
   navigate: PropTypes.func.isRequired,
-  toggleModal: PropTypes.func.isRequired,
-  switchToRegister: PropTypes.func.isRequired
+  closeModal: PropTypes.func.isRequired,
+  switchToLogin: PropTypes.func.isRequired
 }
 
-export default Login
+export default Register

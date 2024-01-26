@@ -1,0 +1,40 @@
+/* Register.css */
+
+.modal-footer {
+    font-size: 0.9em;
+    color: rgba(84, 255, 235, 0.781);
+}
+
+.modal-footer button {
+    font-style: none;
+    color: rgb(0, 162, 255);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    background: none;
+    font-style: none;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    border: none;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    font-size: 1em;
+}
+
+.modal-footer button:hover,
+.modal-footer button:focus {
+    color: rgb(255, 0, 128);
+}
+
+
+
+/* .btn-register {
+    background: none;
+    font-style: none;
+    color: rgb(0, 255, 255);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    border: none;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    font-size: 1em;
+} */

@@ -1,13 +1,15 @@
 // Login.jsx
 
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import '../css/Login.css'
 import '../css/LandingPage.css'
 import '../css/fonts.css'
 
-const Login = ({ navigate, toggleModal, switchToRegister }) => {
+const Login = ({ toggleModal, switchToRegister }) => {
+  const navigate = useNavigate
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -79,7 +81,7 @@ const Login = ({ navigate, toggleModal, switchToRegister }) => {
 }
 
 Login.propTypes = {
-  navigate: PropTypes.func.isRequired,
+  
   toggleModal: PropTypes.func.isRequired,
   switchToRegister: PropTypes.func.isRequired
 }

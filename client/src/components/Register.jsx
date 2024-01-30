@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 import '../css/Login.css'
@@ -6,7 +7,8 @@ import '../css/Register.css'
 import '../css/LandingPage.css'
 import '../css/fonts.css'
 
-const Register = ({ navigate, closeModal, switchToLogin }) => {
+const Register = ({ closeModal, switchToLogin }) => {
+  const navigate = useNavigate
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')

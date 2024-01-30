@@ -1,6 +1,6 @@
 // pages/LandingPage.jsx
 import { useState } from 'react'
-import PropTypes from 'prop-types'
+import { useNavigate } from 'react-router-dom'
 import logo from '../assets/logo.png'
 import bgVideo from '../assets/bg.mp4'
 import ModalWrapper from '../components/ModalWrapper'
@@ -11,7 +11,8 @@ import Copyright from '../components/Copyright'
 import '../css/LandingPage.css'
 import '../css/fonts.css'
 
-const LandingPage = ({ navigate }) => {
+const LandingPage = () => {
+  const navigate = useNavigate
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [modalContent, setModalContent] = useState('login')
 
@@ -58,10 +59,6 @@ const LandingPage = ({ navigate }) => {
       <Copyright />
     </div>
   )
-}
-
-LandingPage.propTypes = {
-  navigate: PropTypes.func.isRequired
 }
 
 export default LandingPage

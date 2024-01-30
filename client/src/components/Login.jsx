@@ -38,8 +38,7 @@ const Login = ({ toggleModal, switchToRegister }) => {
       setLoading(false)
     } finally {
       setLoading(false)
-      setEmail('')
-      setPassword('')
+     
     }
   }
 

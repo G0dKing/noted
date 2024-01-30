@@ -7,9 +7,10 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import '../css/Login.css'
 import '../css/LandingPage.css'
 import '../css/fonts.css'
+import '../css/Register.css'
 
 const Login = ({ toggleModal, switchToRegister }) => {
-  const navigate = useNavigate
+  const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')

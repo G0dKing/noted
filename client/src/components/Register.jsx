@@ -8,7 +8,7 @@ import '../css/LandingPage.css'
 import '../css/fonts.css'
 
 const Register = ({ closeModal, switchToLogin }) => {
-  const navigate = useNavigate
+  const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -74,7 +74,6 @@ const Register = ({ closeModal, switchToLogin }) => {
 }
 
 Register.propTypes = {
-  navigate: PropTypes.func.isRequired,
   closeModal: PropTypes.func.isRequired,
   switchToLogin: PropTypes.func.isRequired
 }

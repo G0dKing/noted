@@ -29,7 +29,6 @@ const Login = ({ toggleModal, switchToRegister }) => {
     try {
       const auth = getAuth()
       await signInWithEmailAndPassword(auth, email, password)
-      localStorage.setItem('token', 'your_token_here')
       toggleModal()
       navigate('/dashboard')
     } catch (error) {

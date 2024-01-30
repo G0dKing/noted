@@ -3,8 +3,9 @@
 import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import LandingPage from './pages/LandingPage'
-import Redirect from './components/Redirect'
+import Redirect from './.templates/Redirect'
 import Dashboard from './pages/Dashboard'
+import  './firebaseConfig'
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false)

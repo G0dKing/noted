@@ -118,6 +118,11 @@
     
 }
 
+.success-message {
+    color: rgb(9, 255, 0);
+    font-size: 1em;
+}
+
 
 @keyframes fadeIn {
     from {

@@ -11,6 +11,7 @@ const Register = ({ closeModal, switchToLogin }) => {
   const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState()
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
@@ -20,10 +21,16 @@ const Register = ({ closeModal, switchToLogin }) => {
     setLoading(true)
 
     if (!email || !password) {
-      setError('Please enter both an email and password.')
+      setError('Please fill out all fields.')
       setLoading(false)
       return
     }
+
+    if (confirmPassword != password) {
+      setError('Passwords do not match.')
+      setLoading(false)
+      return
+    } 
 
     try {
       const auth = getAuth()
@@ -60,14 +67,25 @@ const Register = ({ closeModal, switchToLogin }) => {
             onChange={e => setPassword(e.target.value)}
           />
         </div>
+          <div className='text-confirm-password'>
+          <input
+            type='password'
+            placeholder='Confirm Password'
+            value={confirmPassword}
+            onChange={e => setConfirmPassword(e.target.value)}
+          />
+        </div>
         <button type='submit' className='btn-submit' disabled={loading}>
           {loading ? 'Loading...' : 'Submit'}
         </button>
       </form>
-      <div className='btn-back-box'>
-        <button className='btn-back' onClick={switchToLogin}>
-          Back to Login
-        </button>
+      <div className='modal-footer'>
+        <p>
+         Already have an account?{' '} Return to 
+          <button className='btn-register' onClick={switchToLogin}>
+            Login
+          </button>
+        </p>
       </div>
     </div>
   )

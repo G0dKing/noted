@@ -10,6 +10,8 @@ import BtnMain from '../components/BtnMain'
 import Copyright from '../components/Copyright'
 import '../css/LandingPage.css'
 import '../css/fonts.css'
+import '../css/Login.css'
+import '../css/Register.css'
 
 const LandingPage = () => {
   const navigate = useNavigate

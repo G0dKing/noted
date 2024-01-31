@@ -9,16 +9,18 @@ import '../css/LandingPage.css'
 import '../css/fonts.css'
 import '../css/Register.css'
 
-const Login = ({ toggleModal, switchToRegister }) => {
+const Login = ({ closeModal, switchToRegister }) => {
   const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
+  const [success, setSuccess] = useState('')
   const [loading, setLoading] = useState(false)
 
   const handleLogin = async e => {
     e.preventDefault()
     setError('')
+    setSuccess('')
     setLoading(true)
 
     if (!email || !password) {
@@ -30,15 +32,15 @@ const Login = ({ toggleModal, switchToRegister }) => {
     try {
       const auth = getAuth()
       await signInWithEmailAndPassword(auth, email, password)
-      toggleModal()
-      navigate('/dashboard')
+       setSuccess('Logged in successfully. Redirecting...')
+       navigate('/dashboard')
+       closeModal()     
     } catch (error) {
-      console.error('Error during login:', error)
-      setError('Login failed. Please check your credentials and try again.')
-      setLoading(false)
+       console.error('Error during login:', error)
+       setError(error.message)
+       setLoading(false)
     } finally {
-      setLoading(false)
-     
+        setLoading(false)     
     }
   }
 
@@ -47,6 +49,7 @@ const Login = ({ toggleModal, switchToRegister }) => {
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
         {error && <div className='error-message'>{error}</div>}
+        {success && <div className='success-message'>{success}</div>}
         <div className='text-email'>
           <input
             type='email'
@@ -81,7 +84,7 @@ const Login = ({ toggleModal, switchToRegister }) => {
 
 Login.propTypes = {
   
-  toggleModal: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired,
   switchToRegister: PropTypes.func.isRequired
 }
 
